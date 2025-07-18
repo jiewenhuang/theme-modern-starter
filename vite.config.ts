@@ -1,9 +1,10 @@
 import { defineConfig } from "vite";
 import { fileURLToPath } from "url";
+import tailwindcss from "@tailwindcss/vite";
 import path from "path";
 
 export default defineConfig({
-  plugins: [],
+  plugins: [tailwindcss()],
   build: {
     outDir: fileURLToPath(new URL("./templates/assets/dist", import.meta.url)),
     emptyOutDir: true,

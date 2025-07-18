@@ -1,3 +1,8 @@
-@tailwind base;
-@tailwind utilities;
-@tailwind components;
+@import "tailwindcss";
+@source '../main.ts';
+@source '../../templates/**/*.html';
+/*安全列表*/
+@source './safelist.txt';
+@plugin "@tailwindcss/typography";
+@plugin "@iconify/tailwind4";
+

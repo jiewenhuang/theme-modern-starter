@@ -11,6 +11,8 @@
 - 使用 [@tailwindcss/typography](https://tailwindcss.com/docs/typography-plugin) 作为内容样式。
 - 使用 [Iconify](https://iconify.design/) + [@iconify/tailwind](https://iconify.design/docs/usage/css/tailwind/#installation) 作为图标方案。
 - 集成了 [Alpine.js](https://alpinejs.dev/)。
+- 集成了 [swup.js](https://swup.js.org/) 作为页面切换优化。
+- 集成了 [Preact](https://preactjs.com/)。
 - 集成了 ESLint + Prettier。
 
 ## 开发

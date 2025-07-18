@@ -1,10 +1,12 @@
 import { defineConfig } from "vite";
 import { fileURLToPath } from "url";
 import tailwindcss from "@tailwindcss/vite";
+import preact from "@preact/preset-vite";
+
 import path from "path";
 
 export default defineConfig({
-  plugins: [tailwindcss()],
+  plugins: [tailwindcss(), preact()],
   build: {
     outDir: fileURLToPath(new URL("./templates/assets/dist", import.meta.url)),
     emptyOutDir: true,

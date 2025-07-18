@@ -9,6 +9,17 @@
     <script th:src="@{/assets/dist/main.iife.js?v={version}(version=${theme.spec.version})}"></script>
   </head>
   <body>
-    <th:block th:replace="${content}" />
+    <header class="w-full">
+      <div class="flex flex-col items-center justify-center pt-3">
+        <div>
+          <span class="text-3xl font-bold">Head</span>
+        </div>
+
+        <div id="counter"></div>
+      </div>
+    </header>
+    <main id="swup" class="transition-main">
+      <th:block th:replace="${content}" />
+    </main>
   </body>
 </html>

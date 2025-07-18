@@ -13,6 +13,7 @@
 - 集成了 [Alpine.js](https://alpinejs.dev/)。
 - 集成了 [swup.js](https://swup.js.org/) 作为页面切换优化。
 - 集成了 [Preact](https://preactjs.com/)。
+- 集成了 [daisyUI](https://daisyui.com/)。
 - 集成了 ESLint + Prettier。
 
 ## 开发

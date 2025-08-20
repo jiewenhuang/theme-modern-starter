@@ -1,4 +1,4 @@
-<!DOCTYPE html>
+<!doctype html>
 <html xmlns:th="https://www.thymeleaf.org" th:replace="~{modules/layout :: html(content = ~{::content})}">
   <th:block th:fragment="content">
     <article
@@ -8,5 +8,8 @@
       <h1 th:text="${post.spec.title}"></h1>
       <th:block th:utext="${post.content.content}"> </th:block>
     </article>
+    <div th:if="${haloCommentEnabled}">
+      <halo:comment group="content.halo.run" kind="Post" th:attr="name=${post.metadata.name}" />
+    </div>
   </th:block>
 </html>

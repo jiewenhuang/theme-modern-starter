@@ -37,3 +37,11 @@ spec:
               label: prose-neutral
             - value: prose-stone
               label: prose-stone
+    - group: development
+      label: 开发设置
+      formSchema:
+        - $formkit: checkbox
+          name: enabled
+          label: 启用开发模式
+          value: false
+          help: 仅供开发环境使用，开启此设置后，所有静态资源由 Vite 开发服务器提供，所以需要在本地启动 Vite 服务（pnpm dev）

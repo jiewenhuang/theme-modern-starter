@@ -2,10 +2,24 @@ import "./styles/tailwind.css";
 import "./styles/main.css";
 import Alpine from "alpinejs";
 import Swup from "swup";
+import SwupHeadPlugin from "@swup/head-plugin";
+import SwupPreloadPlugin from "@swup/preload-plugin";
+import SwupScrollPlugin from "@swup/scroll-plugin";
+import SwupScriptsPlugin from "@swup/scripts-plugin";
+
 import { mountCounter } from "./preact";
 
 window.Alpine = Alpine;
 const swup = new Swup({
+  plugins: [
+    new SwupHeadPlugin({ persistAssets: true }),
+    new SwupPreloadPlugin(),
+    new SwupScrollPlugin(),
+    new SwupScriptsPlugin({
+      head: false,
+      body: true,
+    }),
+  ],
   containers: ["#swup"],
 });
 
@@ -26,7 +40,7 @@ swup.hooks.on("visit:start", () => {
 });
 swup.hooks.on("content:replace", () => {
   console.log("Content replaced");
-  mountWidgets();
+  // mountWidgets();
 });
 
 // 页面初始加载

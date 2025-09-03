@@ -5,6 +5,8 @@
     <meta http-equiv="X-UA-Compatible" content="IE=edge" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <title th:text="${site.title}"></title>
+
+    <script type="application/json" id="theme-config" th:utext="${theme.config}"></script>
     <th:block th:if="${theme.config.development.enabled}">
       <script type="module" src="http://localhost:5173/@vite/client"></script>
       <script type="module" src="http://localhost:5173/main.ts"></script>

@@ -6,25 +6,40 @@ import preact from "@preact/preset-vite";
 
 export default ({ mode }: { mode: string }) => {
   const isProduction = mode === "production";
+  // 定义多个入口
+  const entries = {
+    main: path.resolve(__dirname, "src/main.ts"),
+    plugins: path.resolve(__dirname, "src/plugins/index.ts"),
+    // photo: path.resolve(__dirname, "photo.ts"),
+    // 可继续添加，如：'profile': 'src/profile.ts'
+  };
 
   return defineConfig({
     root: "./src",
     base: isProduction ? "/themes/theme-modern-starter/assets/dist/" : "",
     plugins: [tailwindcss(), preact()],
     define: {
-      "process.env": process.env,
+      "process.env.NODE_ENV": JSON.stringify(mode),
     },
     build: {
       manifest: isProduction,
       minify: isProduction,
       rollupOptions: {
-        input: path.resolve(__dirname, "src/main.ts"),
+        input: entries,
         output: {
+          manualChunks(id) {
+            if (id.includes("node_modules")) {
+              if (id.includes("lodash-es")) return "lodash";
+              if (id.includes("preact")) return "preact";
+              // 其他第三方库可归到 vendor
+              return "vendor";
+            }
+            return undefined;
+          },
           entryFileNames: "[name].js",
-          chunkFileNames: "[name].js",
+          chunkFileNames: "[name].[hash].js",
           assetFileNames: "[name][extname]",
         },
-        treeshake: false,
         preserveEntrySignatures: "allow-extension",
       },
       outDir: fileURLToPath(new URL("./templates/assets/dist", import.meta.url)),
